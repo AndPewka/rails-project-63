@@ -1,0 +1,17 @@
+class TagTest
+  def test_closed_tag: -> untyped
+
+  def test_closed_tag_with_attrs_and_text: -> untyped
+
+  def test_single_tag: -> untyped
+
+  def test_single_tag_with_body_should_raise: -> untyped
+
+  def test_tag_with_attrs: -> untyped
+
+  def test_tag_with_multiple_attrs: -> untyped
+
+  def test_tag_with_text: -> untyped
+
+  def test_with_empty_tag: -> untyped
+end

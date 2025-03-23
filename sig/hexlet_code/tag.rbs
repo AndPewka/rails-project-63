@@ -1,5 +1,11 @@
 module HexletCode
   module Tag
+    SINGLE_TAGS: untyped
+
+    def self.build: -> untyped
+
+    def self.single?: -> untyped
+
     def add_attributes: -> untyped
   end
 end
