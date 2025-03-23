@@ -1,8 +1,7 @@
 .PHONY: build lint test
 
 build:
-	echo "Building..."
-	bundle
+	bundle install
 
 lint:
 	bundle exec rubocop
