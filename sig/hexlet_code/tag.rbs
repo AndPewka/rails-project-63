@@ -1,0 +1,5 @@
+module HexletCode
+  module Tag
+    def add_attributes: -> untyped
+  end
+end
