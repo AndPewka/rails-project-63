@@ -37,6 +37,12 @@ result = HexletCode.form_for @user do |f|
 end
 # => <form action=\"#\" method=\"post\"><input name=\"name\" type=\"text\" value=\"Andrey\"><input name=\"job\" type=\"text\" value=\"unemployed\"></form>
 
+result = HexletCode.form_for @user do |f|
+    f.input :name
+    f.submit
+end
+# => <form action=\"#\" method=\"post\"><label for=\"name\">Name</label><input name=\"name\" value=\"Andrey\" type=\"text\"><input type=\"submit\" value=\"Save\"></form>
+
 ```
 
 ## Development
