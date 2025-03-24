@@ -68,4 +68,24 @@ class FormTest < Minitest::Test
 
     assert_match "undefined method `age'", error.message
   end
+
+  def test_form_with_submit
+    result = HexletCode.form_for @user, url: "#" do |f|
+      f.input :job
+      f.submit
+    end
+
+    expected = load_fixture("test_form_with_submit.html")
+    assert_equal expected, result
+  end
+
+  def test_form_with_submit_custom_text
+    result = HexletCode.form_for @user, url: "#" do |f|
+      f.input :job
+      f.submit "Test"
+    end
+
+    expected = load_fixture("test_form_with_submit_custom_text.html")
+    assert_equal expected, result
+  end
 end

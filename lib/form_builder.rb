@@ -11,29 +11,61 @@ module HexletCode
       as = options.delete(:as) || :input
       value = @user.public_send(name)
       options[:name] = name
+      options[:value] = value
 
-      @fields << build_input(as, value, options)
+      @fields << build_label(name) if as == :input
+      @fields << build_field(as, options)
 
       nil
     end
 
-    def build_input(as, value, options)
-      case as
-      when :input
-        options[:type] ||= "text"
-        options[:value] = value
-        Tag.build("input", options)
-      when :text
-        options[:rows] ||= 40
-        options[:cols] ||= 20
-        Tag.build("textarea", options) { value }
-      else
-        raise ArgumentError, "Unsupported input type: #{type}"
-      end
+    def submit(value = "Save", **options)
+      options[:type] ||= "submit"
+      options[:value] ||= value
+      @fields << build_field(:input, options)
+
+      nil
     end
 
     def render
       @fields.join
+    end
+
+    private
+
+    def build_label(name)
+      Tag.build("label", for: name) { name.to_s.capitalize }
+    end
+
+    def build_field(as, options)
+      sorted_options = options.sort.to_h
+
+      case as
+      when :input
+        build_input_field(sorted_options)
+      when :text
+        build_textarea_field(sorted_options)
+      when :submit
+        build_submit_field(sorted_options)
+      else
+        raise ArgumentError, "Unsupported input type: #{as}"
+      end
+    end
+
+    def build_input_field(options)
+      options[:type] ||= "text"
+      Tag.build("input", options)
+    end
+
+    def build_textarea_field(options)
+      options[:rows] ||= 40
+      options[:cols] ||= 20
+      Tag.build("textarea", options) { options.delete(:value) }
+    end
+
+    def build_submit_field(options)
+      options[:type] ||= "submit"
+      Tag.build("input", options)
     end
   end
 end
