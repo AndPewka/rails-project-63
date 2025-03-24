@@ -5,9 +5,9 @@ module HexletCode
     SINGLE_TAGS = %w[area base br col embed hr img input link meta source track wbr].freeze
 
     def self.build(name, attrs = {})
-      body = block_given? ? yield : ""
+      body = block_given? ? yield : ''
 
-      raise ArgumentError, "Tag cannot be an ampty" if name.empty?
+      raise ArgumentError, 'Tag cannot be an ampty' if name.empty?
 
       single_tag = single?(name)
 

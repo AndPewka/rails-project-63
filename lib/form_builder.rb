@@ -19,8 +19,8 @@ module HexletCode
       nil
     end
 
-    def submit(value = "Save", **options)
-      options[:type] ||= "submit"
+    def submit(value = 'Save', **options)
+      options[:type] ||= 'submit'
       options[:value] ||= value
       @fields << build_field(:submit, options)
 
@@ -34,7 +34,7 @@ module HexletCode
     private
 
     def build_label(name)
-      Tag.build("label", for: name) { name.to_s.capitalize }
+      Tag.build('label', for: name) { name.to_s.capitalize }
     end
 
     def build_field(as, options)
@@ -53,18 +53,18 @@ module HexletCode
     end
 
     def build_input_field(options)
-      options[:type] = "text"
-      Tag.build("input", options)
+      options[:type] = 'text'
+      Tag.build('input', options)
     end
 
     def build_textarea_field(options)
       options[:rows] ||= 40
       options[:cols] ||= 20
-      Tag.build("textarea", options) { options.delete(:value) }
+      Tag.build('textarea', options) { options.delete(:value) }
     end
 
     def build_submit_field(options)
-      Tag.build("input", options)
+      Tag.build('input', options)
     end
   end
 end
