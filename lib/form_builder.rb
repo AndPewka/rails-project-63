@@ -10,7 +10,7 @@ module HexletCode
     def input(name, **options)
       as = options.delete(:as) || :input
       value = @user.public_send(name)
-      options["name"] = name
+      options[:name] = name
 
       @fields << build_input(as, value, options)
 
