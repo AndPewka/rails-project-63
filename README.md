@@ -25,6 +25,18 @@ HexletCode::Tag.build('input', type: 'submit', value: 'Save')
 
 HexletCode::Tag.build('label', for: 'email') { 'Email' }
 # => <label for="email">Email</label>
+
+result = HexletCode.form_for @user do |f|
+    f.input :name
+end
+# => <form action=\"#\" method=\"post\"><input name=\"name\" type=\"text\" value=\"Andrey\"></form>
+
+result = HexletCode.form_for @user do |f|
+    f.input :name
+    f.input :job
+end
+# => <form action=\"#\" method=\"post\"><input name=\"name\" type=\"text\" value=\"Andrey\"><input name=\"job\" type=\"text\" value=\"unemployed\"></form>
+
 ```
 
 ## Development
