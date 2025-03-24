@@ -22,7 +22,7 @@ module HexletCode
     def submit(value = "Save", **options)
       options[:type] ||= "submit"
       options[:value] ||= value
-      @fields << build_field(:input, options)
+      @fields << build_field(:submit, options)
 
       nil
     end
@@ -64,7 +64,6 @@ module HexletCode
     end
 
     def build_submit_field(options)
-      options[:type] = "submit"
       Tag.build("input", options)
     end
   end
