@@ -13,7 +13,7 @@ module HexletCode
       options[:name] = name
       options[:value] = value
 
-      @fields << build_label(name) if [:input, :text].include? as
+      @fields << build_label(name) if %i[input text].include?(as)
       @fields << build_field(as, options)
 
       nil
