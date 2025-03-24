@@ -88,4 +88,14 @@ class FormTest < Minitest::Test
     expected = load_fixture("test_form_with_submit_custom_text.html")
     assert_equal expected, result
   end
+
+  def test_form_unsopported_as
+    error = assert_raises(ArgumentError) do
+      HexletCode.form_for @user, url: "/users" do |f|
+        f.input :job, as: :unsopported
+      end
+    end
+
+    assert_match "Unsupported input type: unsopported", error.message
+  end
 end
