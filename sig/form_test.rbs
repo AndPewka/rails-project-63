@@ -1,0 +1,27 @@
+class FormTest
+  @user: untyped
+
+  def setup: -> untyped
+
+  def test_form_for_with_class: -> untyped
+
+  def test_form_for_with_class_and_url: -> untyped
+
+  def test_form_for_with_classand_url: -> untyped
+
+  def test_form_for_with_custom_values: -> untyped
+
+  def test_form_for_with_multy_input: -> untyped
+
+  def test_form_for_with_only_user: -> untyped
+
+  def test_form_for_with_single_input: -> untyped
+
+  def test_form_for_with_url: -> untyped
+
+  def test_form_unsopported_as: -> untyped
+
+  def test_form_with_submit: -> untyped
+
+  def test_form_with_user_no_object: -> untyped
+end

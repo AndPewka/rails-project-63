@@ -1,0 +1,26 @@
+module HexletCode
+  class FormBuilder
+    @fields: untyped
+
+    @fields: untyped
+    @user: untyped
+
+    def input: -> untyped
+
+    def render: -> untyped
+
+    def submit: -> untyped
+
+    private
+
+    def build_field: -> untyped
+
+    def build_input_field: -> untyped
+
+    def build_label: -> untyped
+
+    def build_submit_field: -> untyped
+
+    def build_textarea_field: -> untyped
+  end
+end

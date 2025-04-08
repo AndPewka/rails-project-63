@@ -9,23 +9,19 @@ module HexletCode
 
       raise ArgumentError, 'Tag cannot be an ampty' if name.empty?
 
-      single_tag = single?(name)
+      single_tag = SINGLE_TAGS.include?(name)
 
-      raise ArgumentError, "Self-closing tag <#{name}> cannot have a body" if
-        single_tag && !body.empty?
+      raise ArgumentError, "Self-closing tag <#{name}> cannot have a body" if single_tag && !body.empty?
 
       attributes = add_attributes attrs
 
       single_tag ? "<#{name}#{attributes}>" : "<#{name}#{attributes}>#{body}</#{name}>"
     end
 
-    def self.add_attributes(attrs = {})
-      attributes = attrs.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')
-      " #{attributes}" unless attributes.empty?
-    end
+    def self.add_attributes(attrs)
+      return '' if attrs.empty?
 
-    def self.single?(tag)
-      SINGLE_TAGS.include?(tag)
+      " #{attrs.map { |k, v| "#{k}=\"#{v}\"" }.join(' ')}"
     end
   end
 end
