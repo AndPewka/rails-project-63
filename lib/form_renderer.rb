@@ -9,15 +9,15 @@ module HexletCode
       submit_data  = form_body[:submit]
 
       Tag.build('form', form_options) do
-        result = ''
+        result = []
 
-        inputs.each do |field_data|
-          result += render_input(field_data)
+        inputs.map do |field_data|
+          result << render_input(field_data)
         end
 
         result << render_submit(submit_data) if submit_data
 
-        result
+        result.join
       end
     end
 
