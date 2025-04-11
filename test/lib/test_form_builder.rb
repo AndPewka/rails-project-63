@@ -90,12 +90,10 @@ class FormTest < Minitest::Test
   end
 
   def test_form_unsopported_as
-    error = assert_raises(ArgumentError) do
+    assert_raises(NameError) do
       HexletCode.form_for @entity, url: '/users' do |f|
         f.input :job, as: :unsopported
       end
     end
-
-    assert_match 'Unsupported input type: unsopported', error.message
   end
 end

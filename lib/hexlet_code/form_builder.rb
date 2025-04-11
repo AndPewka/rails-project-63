@@ -15,13 +15,12 @@ module HexletCode
           action: action,
           method: method
         }.merge(attributes.except(:url, :method)),
-
         inputs: []
       }
     end
 
     def input(name, **options)
-      as = options.delete(:as) || :input
+      as = options.delete(:as) || :string
       value = @entity.public_send(name)
 
       @form_body[:inputs] << {

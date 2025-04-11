@@ -7,14 +7,12 @@ module HexletCode
     def self.build(name, attrs = {})
       body = block_given? ? yield : ''
 
-      raise ArgumentError, 'Tag cannot be an ampty' if name.empty?
+      raise ArgumentError, 'Tag cannot be empty' if name.empty?
 
       single_tag = SINGLE_TAGS.include?(name)
-
       raise ArgumentError, "Self-closing tag <#{name}> cannot have a body" if single_tag && !body.empty?
 
-      attributes = add_attributes attrs
-
+      attributes = add_attributes(attrs)
       single_tag ? "<#{name}#{attributes}>" : "<#{name}#{attributes}>#{body}</#{name}>"
     end
 
