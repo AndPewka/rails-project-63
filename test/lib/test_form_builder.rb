@@ -4,29 +4,33 @@ require 'test_helper'
 
 Entity = Struct.new(:name, :job, keyword_init: true)
 
-class FormTest < Minitest::Test
+class FormBuilderTest < Minitest::Test
   def setup
     @entity = Entity.new(name: 'Andrey', job: 'unemployed')
   end
 
   def test_form_for_with_only_user
     result = HexletCode.form_for @entity
-    assert_equal '<form action="#" method="post"></form>', result
+    expected = load_fixture('form_only_user.html')
+    assert_equal expected, result
   end
 
   def test_form_for_with_class
     result = HexletCode.form_for @entity, class: 'hexlet_form'
-    assert_equal '<form action="#" method="post" class="hexlet_form"></form>', result
+    expected = load_fixture('form_with_class.html')
+    assert_equal expected, result
   end
 
   def test_form_for_with_url
     result = HexletCode.form_for @entity, url: '/profile'
-    assert_equal '<form action="/profile" method="post"></form>', result
+    expected = load_fixture('form_with_url.html')
+    assert_equal expected, result
   end
 
   def test_form_for_with_class_and_url
     result = HexletCode.form_for @entity, url: '/profile', class: 'hexlet_form'
-    assert_equal '<form action="/profile" method="post" class="hexlet_form"></form>', result
+    expected = load_fixture('form_with_class_and_url.html')
+    assert_equal expected, result
   end
 
   def test_form_for_with_single_input

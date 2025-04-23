@@ -10,9 +10,7 @@ module HexletCode
 
       Tag.build('form', form_options) do
         result = []
-        inputs.map do |field_data|
-          result << render_input(field_data)
-        end
+        inputs.map { |field_data| result << render_input(field_data) }
         result << render_submit(submit_data) if submit_data
         result.join
       end
